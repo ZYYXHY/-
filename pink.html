@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书选购</title>
+    <link rel="stylesheet" href="./css/bace.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <style>
+    .about {
+		padding: 5px 120px;
+		line-height: 50px;
+		background: lightblue;
+		color: white;
+		display: flex;
+		justify-content: space-between;
+		cursor: pointer;
+		font-weight: bold;
+	}
+	.about span:hover {
+		color: skyblue;
+	}
+
+    main{
+        display: flex;/* 启用弹性布局，用于子元素的排列*/
+        justify-content: center;/*水平居中 是 Flex 布局的属性*/ 
+        width: 100%;
+    }
+    main .left{
+        padding: 20px 30px;/* 上下内边距20px，左右内边距30px*/
+        width: 100%;
+        max-width: 1200px;
+    }
+    .left ul{
+        display: flex;/* 启用弹性布局，让li横向排列 */
+        justify-content: center;
+        flex-wrap: wrap;/*是控制 Flex 容器内子元素换行规则的核心属性，作用是当子元素总宽度超过 Flex 容器宽度时，让子元素自动换行到下一行显示*/
+        padding: 0;
+        margin: 0;
+        gap: 20px;
+    }
+     .left ul li{
+        margin-bottom: 50px;/* 图书项之间的上下间距，避免内容拥挤 */
+        text-align: center;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    .left ul li img{
+        width: 136px;
+        height: 161px;
+        border: 8px solid lightblue;
+    }
+    /* 图书封面图片的悬浮动画效果 */
+    .left ul li img:hover{
+        margin-bottom: 11px; /* 鼠标悬停时，给图片设置底部外边距11px */
+        margin-top: 11px; /* 鼠标悬停时，给图片设置顶部外边距11px */
+        transition: all .4s; /* 动画过渡时长0.4秒，让位移效果更丝滑 */
+}
+    .left ul li p:nth-child(2){
+        margin-top: 10px;/* 与上方图片拉开间距 */
+        color: #0096FF;
+        font-weight: bold;
+    }
+    .left ul li p:nth-child(3){
+        margin: 10px 0;
+    }
+
+    .left ul li a{
+        display: inline-block; /* 转为行内块元素，可设置宽高 */
+        width: 82px;
+        height: 34px;
+        text-align: center;
+        line-height: 30px;
+        background-color: white;
+        color: black;
+        border-radius: 10px;
+        border: 1px solid skyblue;
+    }
+    .left ul li a:hover{
+        background: skyblue;
+        color: white;   
+    }
+   
+    .di{
+        font-size: 15px;
+        text-align: center;
+        margin: 10px 0;
+        display: flex;/* 弹性布局，辅助内部p标签居中 */
+        justify-content: center;/* 水平居中内部按钮 */
+        border-top: 1px solid rgb(243, 243, 243);
+        border-bottom: 1px solid rgb(243, 243, 243);
+    }
+    .di p {
+        background-color: skyblue;
+        width: 80px;
+        height: 50px;
+        line-height: 50px;/* 行高等于高度，文字垂直居中 */
+        border-radius: 10px;
+        font-weight: bold;
+        color: #645b5b;
+    }
+    .di p:hover{
+        color: white;
+    }
+
+</style>
+</head>
+<body>
+     <!-- 快捷导航 -->
+     <div class="shortcut">
+        <div class="wrapper">
+            <ul>
+                <li><a href="login.html">请先登录</a></li>
+                <li><a href="login.html">免费注册</a></li>
+                <li><a href="cart.html">我的订单</a></li>
+                <li><a href="">会员中心</a></li>
+                <li><a href="">帮助中心</a></li>
+                <li><a href="">在线客服</a></li>
+                <li><a href=""><span></span>手机版</a></li>
+            </ul>
+        </div>
+     </div>
+
+     <!-- 顶部导航栏 -->
+      <div class="header wrapper">
+        <div class="logo">
+            <a href=""></a>
+        </div>
+
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="index.html">首页</a>
+                    <ul class="sub-menu">
+                        <li><a href="">热榜专区</a></li>
+                        <li><a href="">经典推送</a></li>
+                        <li><a href="">特色专题</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="video.html">在线视频</a>
+                    <ul class="sub-menu">
+                        <li><a href="">长篇动画</a></li>
+                        <li><a href="">短片动画</a></li>
+                    </ul>
+                </li>
+
+                <li>
+					<a href="pink.html">图书选购</a>
+					<ul class="sub-menu">
+						<li><a href="">动漫原著集</a></li>
+						<li><a href="">动漫改编集</a></li>
+					</ul>
+				</li>
+
+                <li>
+					<a href="detail.html">商品详情</a>
+					<ul class="sub-menu">
+						<li><a href="">封面细节</a></li>
+						<li><a href="">内容呈现</a></li>
+				    </ul>
+				</li>
+
+                <li><a href="cart.html">购物车</a></li>
+                <li>
+					<a href="login.html">会员登录</a>
+					<ul class="sub-menu">
+						<li><a href="">登录</a></li>
+						<li><a href="">注册</a></li>
+					</ul>
+				</li>
+
+                <li>
+					<a href="leave.html">留言板</a>
+					<ul class="sub-menu">
+						<li><a href="">用户分享区</a></li>
+						<li><a href="">建议反馈区</a></li>
+					</ul>
+				</li>
+            </ul>
+        </div>
+
+        <!-- 搜素 -->
+        <div class="search">
+            <input type="text" placeholder="搜一搜">
+            <!-- 搜素图标 -->
+            <span></span>
+        </div>
+        <div class="car"></div>
+      </div>
+
+      <div class="about">
+        <span>选购</span>
+        <span>更多</span>
+      </div>
+
+      <div class="center">
+        <main>
+            <div class="left">
+                <ul>
+                    <li data-id="1" data-img="./images/pink/1.jpg" data-name="《龙猫》" data-price="38.00">
+                        <img src="./images/pink/1.jpg" alt="">
+                        <p>《龙猫》</p>
+                        <p>￥38.00</p>
+                        <a href="javascript:;" class="add-cart">选购</a>
+                    </li>
+                    <li data-id="2" data-img="./images/pink/2.jpg" data-name="《岸上的波妞》" data-price="35.00">
+                        <img src="./images/pink/2.jpg" alt="">
+                        <p>《岸上的波妞》</p>
+                        <p>￥35.00</p>
+                       <a href="javascript:;" class="add-cart">选购</a>
+                    </li>
+                    <li data-id="3" data-img="./images/pink/3.jpg" data-name="《千与千寻》" data-price="40.00">
+                        <img src="./images/pink/3.jpg" alt="">
+                        <p>《千与千寻》</p>
+                        <p>￥40.00</p>
+                        <a href="javascript:;" class="add-cart">选购</a>
+                    </li>
+                    <li data-id="4" data-img="./images/pink/4.jpg" data-name="《风之谷》" data-price="38.88">
+                        <img src="./images/pink/4.jpg" alt="">
+                        <p>《风之谷》</p>
+                        <p>￥38.88</p>
+                      <a href="javascript:;" class="add-cart">选购</a>
+                    </li>
+                </ul>
+                <ul>
+					 <li data-id="5" data-img="./images/pink/5.jpg" data-name="《龙猫》" data-price="40.00">
+						<img src="./images/pink/5.jpg" alt="">
+						<p>《龙猫》</p>
+						<p>￥40.00</p>
+						<a href="javascript:;" class="add-cart">选购</a>
+					</li>
+					 <li data-id="6" data-img="./images/pink/6.jpg" data-name="《天空之城》" data-price="34.00">
+						<img src="./images/pink/6.jpg" alt="">
+						<p>《天空之城》</p>
+						<p>￥34.00</p>
+						<a href="javascript:;" class="add-cart">选购</a>
+					</li>
+						 <li data-id="7" data-img="./images/pink/7.jpg" data-name="《借物少女艾莉缇》" data-price="50.00">
+						<img src="./images/pink/7.jpg" alt="">
+						<p>《借物少女艾莉缇》</p>
+						<p>￥50.00</p>
+						<a href="javascript:;" class="add-cart">选购</a>
+					</li>
+						 <li data-id="8" data-img="./images/pink/8.jpg" data-name="《岸上的波妞》" data-price="40.00">
+						<img src="./images/pink/8.jpg" alt="">
+						<p>《岸上的波妞》</p>
+						<p>￥40.00</p>
+						<a href="javascript:;" class="add-cart">选购</a>
+					</li>
+				</ul>
+                <ul>
+					 <li data-id="9" data-img="./images/pink/9.jpg" data-name="《你想活出怎样的人生》" data-price="36.80">
+						<img src="./images/pink/9.jpg" alt="">
+						<p>《你想活出怎样的人生》</p>
+						<p>￥36.80</p>
+						<a href="javascript:;" class="add-cart">选购</a>
+					</li>
+					 <li data-id="10" data-img="./images/pink/10.jpg" data-name="《哈尔的移动城堡》" data-price="45.78">
+						<img src="./images/pink/10.jpg" alt="">
+						<p>《哈尔的移动城堡》</p>
+						<p>￥45.78</p>
+						<a href="javascript:;" class="add-cart">选购</a>
+					</li>
+					 <li data-id="11" data-img="./images/pink/11.jpg" data-name="《起风了》" data-price="43.90">
+						<img src="./images/pink/11.jpg" alt="">
+						<p>《起风了》</p>
+						<p>￥43.90</p>
+						<a href="javascript:;" class="add-cart">选购</a>
+					</li>
+					 <li data-id="12" data-img="./images/pink/12.jpg" data-name="《幽灵公主》" data-price="33.90">
+						<img src="./images/pink/12.jpg" alt="">
+						<p>《幽灵公主》</p>
+						<p>￥33.90</p>
+						<a href="javascript:;" class="add-cart">选购</a>
+					</li>
+				</ul>
+                <div class="di">
+                    <p>获取更多</p>
+                </div>
+            </div>
+
+        </main>
+      </div>
+    <div class="footer">
+        <div class="wrapper">
+            <div class="top">
+                <ul>
+                     <li><span>价格亲民</span></li>
+                     <li><span>物流快捷</span></li>
+                     <li><span>质量保证</span></li>
+                </ul>
+            </div>
+             <div class="bottom">
+                <p>
+                    <a href="#">关于我们</a> | <a href="#">帮助中心</a> |
+					<a href="#">售后服务</a> | <a href="#">配送与验收</a> |
+					<a href="#">商务合作</a> | <a href="#">搜索推荐</a> |
+					<a href="#">友情链接</a>
+                </p>
+                <p>CopyRight @ 在线商城</p>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/cart.js"></script>
+    <script >
+        $(document).on('click','.add-cart',function(){
+            // 1. 从页面DOM中提取当前点击商品的信息
+            const $currentLi = $(this).closest('li');// 找到包裹商品的li标签（商品列表的每一项）
+             // 构造商品信息对象，从li标签的自定义data-*属性中提取数据
+            const goodsInfo = {
+                id: $currentLi.data('id'), // 从li的data-id属性取商品唯一ID（避免重复）
+                img: $currentLi.data('img'), // 从data-img取商品图片路径（购物车页要显示图片）
+                name: $currentLi.data('name'),// 从data-name取商品名称
+                price: $currentLi.data('price'),// 从data-price取商品单价
+                num: 1 // 初始数量为1（首次添加）
+            };
+            //读取本地存储的购物车数据（无则为空数组）
+    // localStorage.getItem('cartList')：从本地存储读取key为cartList的购物车数据（JSON字符串）
+    // JSON.parse()：将JSON字符串转为JS数组；|| []：兜底，无数据则设为空数组，避免后续操作报错
+            let cartList = JSON.parse(localStorage.getItem('cartList')) || [];
+            //判断商品是否已在购物车：已存在则数量+1，不存在则新增,item => item.id === goodsInfo.id：判断条件：购物车商品的id 等于 当前商品的id
+            const existIndex = cartList.findIndex(item => item.id === goodsInfo.id);
+            if(existIndex > -1){  
+                cartList[existIndex].num++;//数量+1
+            }else{
+                cartList.push(goodsInfo);//新增商品
+            }
+    // JSON.stringify(cartList)：将JS数组转为JSON字符串（本地存储仅支持字符串存储）
+    // localStorage.setItem()：存入数据，覆盖原来的旧数据，实现数据持久化
+            localStorage.setItem('cartList', JSON.stringify(cartList));// 把更新后的购物车数据存回本地存储
+            alert(`✅ ${goodsInfo.name} 已添加到购物车！当前数量：${existIndex > -1 ? cartList[existIndex].num : 1}`);//提示用户添加成功,三元表达式
+        });
+    </script>
+    </body>
+</html>  

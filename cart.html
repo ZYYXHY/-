@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+    <link rel="stylesheet" href="css/bace.css">
+	<link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/car.css">
+</head>
+<body>
+        <!-- 快捷导航 -->
+     <div class="shortcut">
+        <div class="wrapper">
+            <ul>
+                <li><a href="login.html">请先登录</a></li>
+                <li><a href="login.html">免费注册</a></li>
+                <li><a href="cart.html">我的订单</a></li>
+                <li><a href="">会员中心</a></li>
+                <li><a href="">帮助中心</a></li>
+                <li><a href="">在线客服</a></li>
+                <li><a href=""><span></span>手机版</a></li>
+            </ul>
+        </div>
+     </div>
+
+     <!-- 顶部导航栏 -->
+      <div class="header wrapper">
+        <div class="logo">
+            <a href=""></a>
+        </div>
+
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="index.html">首页</a>
+                    <ul class="sub-menu">
+                        <li><a href="">热榜专区</a></li>
+                        <li><a href="">经典推送</a></li>
+                        <li><a href="">特色专题</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="video.html">在线视频</a>
+                    <ul class="sub-menu">
+                        <li><a href="">长篇动画</a></li>
+                        <li><a href="">短片动画</a></li>
+                    </ul>
+                </li>
+
+                <li>
+					<a href="pink.html">图书选购</a>
+					<ul class="sub-menu">
+						<li><a href="">动漫原著集</a></li>
+						<li><a href="">动漫改编集</a></li>
+					</ul>
+				</li>
+
+                <li>
+					<a href="detail.html">商品详情</a>
+					<ul class="sub-menu">
+						<li><a href="">封面细节</a></li>
+						<li><a href="">内容呈现</a></li>
+				    </ul>
+				</li>
+
+                <li><a href="cart.html">购物车</a></li>
+                <li>
+					<a href="login.html">会员登录</a>
+					<ul class="sub-menu">
+						<li><a href="">登录</a></li>
+						<li><a href="">注册</a></li>
+					</ul>
+				</li>
+
+                <li>
+					<a href="leave.html">留言板</a>
+					<ul class="sub-menu">
+						<li><a href="">用户分享区</a></li>
+						<li><a href="">建议反馈区</a></li>
+					</ul>
+				</li>
+            </ul>
+        </div>
+
+        <!-- 搜素 -->
+        <div class="search">
+            <input type="text" placeholder="搜一搜">
+            <!-- 搜素图标 -->
+            <span></span>
+        </div>
+        <div class="car"></div>
+      </div>
+
+      <div class="about">
+        <span>剧照</span>
+        <span>更多</span>
+      </div>
+
+      <div class="xtx-cart-page">
+        <div class="container">
+            <!-- 购物车区域 -->
+            <div class="cart">
+                <table><!-- 用 <table> 展示购物车商品是最优选择,购物车是“行+列”的结构化数据 -->
+                   <thead> <!--表格头部thead-->
+                        <tr><!--表格行，包裹所有列标题的单元格 -->
+                            <th width="120"><input type="checkbox" id="checkAll">&nbsp;全选</th><!--第一列<th>:包含「全选复选框(id="checkbox"，用于 JS 绑定全选 / 取消全选事件）+“全选” 文字，控制所有商品的勾选状态-->
+                            <th width="400">商品</th>
+							<th width="220">单价</th>
+							<th width="180">数量</th>
+							<th width="180">小计</th>
+							<th width="140">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-tbody"></tbody><!-- 动态渲染区域，无需固定内容 -->
+                </table>
+            </div>
+            <!-- 结算区域 -->
+            <div class="action">
+                <div class="amount-sum">已经选择<em class="red">0</em>件商品</div>
+                <div class="price-sum">&nbsp;总价：<em class="red">￥0.00</em></div>
+                <span class="settlement">下单结算</span>
+            </div>
+        </div>
+      </div>
+       <div class="footer">
+            <div class="wrapper">  
+                <div class="top">
+                    <ul>
+                        <li><span>价格亲民</span></li>
+                        <li><span>物流快捷</span></li>
+                        <li><span>质量保证</span></li>
+                    </ul>
+                </div>
+                <div class="bottom">
+                    <p>
+                        <a href="#">关于我们</a> | <a href="#">帮助中心</a> |
+						<a href="#">售后服务</a> | <a href="#">配送与验收</a> |
+						<a href="#">商务合作</a> | <a href="#">搜索推荐</a> |
+						<a href="#">友情链接</a>
+                    </p>
+                    <p>CopyRight @ 在线商城</p>
+                </div>
+            </div>
+        </div>
+        <script src="./js/jquery-3.7.1.min.js"></script>
+        <script src="./js/cart.js"></script>   
+</body>
+</html>

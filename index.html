@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宫崎骏动漫商城</title>
+    <link rel="stylesheet" href="css/bace.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <!-- 快捷导航 <ul> 和 <li> 是用于创建无序列表的标签组合，核心作用是呈现没有先后顺序的条目集合。 -->
+    <div class="shortcut">
+        <div class="wrapper">
+            <ul>
+                <li><a href="login.html">请先登录</a></li>
+                <li><a href="login.html">免费注册</a></li>
+                <li><a href="cart.html">我的订单</a></li>
+                <li><a href="">会员中心</a></li>
+                <li><a href="">帮助中心</a></li>
+                <li><a href="">在线客服</a></li>
+                <li><a href=""><span></span>手机版</a></li>
+            </ul>
+        </div>
+    </div>
+
+     <!-- 顶部导航栏 -->
+      <div class="header wrapper">
+        <div class="logo">
+            <a href=""></a>
+        </div>
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="index.html">首页</a>
+                    <ul class="sub-menu">
+                        <li><a href="">热榜专区</a></li>
+                        <li><a href="">经典推送</a></li>
+                        <li><a href="">特色专题</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="">在线视频</a>
+                    <ul class="sub-menu">
+                        <li><a href="">长篇动画</a></li>
+                        <li><a href="">短片动画</a></li>
+                    </ul>
+                </li>
+
+                <li>
+					<a href="pink.html">图书选购</a>
+					<ul class="sub-menu">
+						<li><a href="">动漫原著集</a></li>
+						<li><a href="">动漫改编集</a></li>
+					</ul>
+				</li>
+
+                <li>
+					<a href="detail.html">商品详情</a>
+					 <ul class="sub-menu">
+						<li><a href="">封面细节</a></li>
+						<li><a href="">内容呈现</a></li>
+				    </ul>
+				</li>
+
+                <li><a href="cart.html">购物车</a></li>
+                <li>
+					<a href="login.html">会员登录</a>
+					<ul class="sub-menu">
+						<li><a href="">登录</a></li>
+						<li><a href="">注册</a></li>
+					</ul>
+				</li>
+
+                <li>
+					<a href="leave.html">留言板</a>
+					<ul class="sub-menu">
+						<li><a href="">用户分享区</a></li>
+						<li><a href="">建议反馈区</a></li>
+					</ul>
+				</li>
+            </ul>
+        </div>
+        <!-- 搜素 -->
+        <div class="search">
+            <input type="text" placeholder="25216950105钟宇嫣">
+            <!-- 搜素图标 -->
+            <span></span>
+        </div>
+
+        <div class="car"></div>
+      </div>
+      
+      <!-- 焦点图 -->
+      <div class="banner">
+        <div class="wrapper">
+            <!-- 侧导航栏 -->
+            <div class="aside">
+                <ul>
+                    <li><a href="">主题<span>奇幻冒险 少年蜕变</span></a></li>
+                    <li><a href="">专区<span>童趣动漫 深度剧情</span></a></li>
+                    <li><a href="">周边<span>主角手办 角色画册</span></a></li>
+                    <li><a href="">经典<span>《千与千寻》《龙猫》</span></a></li>
+                    <li><a href="">影视<span>原声音乐集 动画影视</span></a></li>
+                    <li><a href="">收藏专区<span>限量版藏品 珍稀</span></a></li>
+                    <li><a href="">亲自共读<span>亲子互动读物</span></a></li>
+                    <li><a href="">粉丝福利<span>粉丝定制款 联名</span></a></li>         
+                </ul>
+            </div>
+
+            <div id="imageContainer">
+                <img src="images/banner/banner_1.jpg"alt="轮播图">
+            </div>
+            <!-- 箭头 -->
+             <a href="" class="prev"></a>
+             <a href="" class="next"></a>
+        </div>
+    </div>
+
+       <!-- 精选篇 -->
+        <div class="goods wrapper">
+            <div class="head">
+                <h2>精选推荐<span>新鲜出炉 品质靠谱</span></h2>
+                <a href="">查看全部</a>
+            </div>
+            <div class="bd clearfix shop_list"><ul></ul></div>
+        </div>  <!-- 了强制父容器包裹住所有浮动的 <li> 子元素，让父容器的高度自适应子元素的总高度，避免高度塌陷，保证布局稳定。 -->
+      
+
+        <div class="footer">
+            <div class="wrapper">
+                <div class="top">
+                    <ul>
+                        <li><span>价格亲民</span></li>
+                        <li><span>物流快捷</span></li>
+                        <li><span>质量保证</span></li>
+                    </ul>
+                </div>
+                <div class="bottom">
+                    <p>
+                        <a href="#">关于我们</a> | <a href="#">帮助中心</a> |
+						<a href="#">售后服务</a> | <a href="#">配送与验收</a> |
+						<a href="#">商务合作</a> | <a href="#">搜索推荐</a> |
+						<a href="#">友情链接</a>
+                    </p>
+                    <p>CopyRight @ 在线商城</p>
+                </div>
+            </div>
+        </div>
+      <script src="js/jquery-3.7.1.min.js"></script>
+      <script src="js/menu.js"></script>
+      <script src="js/lunbo.js"></script>
+
+      <script>
+        //商品列表和页面核心模块使用的是 CSS 传统浮动布局（float 布局）
+        //定义了一个包含 8 个商品信息的数组list,数组[],对象{}
+			var list = [{
+					id: 1,
+					picture: './images/goods/1.jpg',
+					name: '起风了（简体中文版）',
+					price: '35.50',
+					address: './detail.html',
+				},
+				{
+					id: 2,
+					picture: './images/goods/2.jpg',
+					name: '千与千寻（简体中文版）',
+					price: '40.00',
+					address: '#',
+				},
+				{
+					id: 3,
+					picture: './images/goods/3.jpg',
+					name: '龙猫（简体中文版）',
+					price: '44.89',
+					address: '#',
+				},
+				{
+					id: 4,
+					picture: './images/goods/4.jpg',
+					name: '风之谷（简体中文版）',
+					price: '29.88',
+					address: '#',
+				},
+				{
+					id: 5,
+					picture: './images/goods/5.jpg',
+					name: '哈尔的移动城堡（简体中文版）',
+					price: '38.50',
+					address: '#',
+				},
+				{
+					id: 6,
+					picture: './images/goods/6.jpg',
+					name: '魔女宅急便（简体中文版）',
+					price: '40.80',
+					address: '#',
+				},
+				{
+					id: 7,
+					picture: './images/goods/7.jpg',
+					name: '虞美人盛开的山坡（简体中文版）',
+					price: '35.70',
+					address: '#',
+				},
+				{
+					id: 8,
+					picture: './images/goods/8.jpg',
+					name: '按上的波妞（简体中文版）',
+					price: '38.90',
+					address: '#',
+				},
+
+			];           
+			var html = '';//是声明并初始化一个空字符串变量，核心作用是作为容器拼接动态生成的商品列表 HTML 代码
+			// $.each(list, function(index, item) {...}) 是 jQuery 提供的一个 each() 全局遍历方法，用于遍历数组或对象中的每个元素，并执行指定的回调函数。
+			//item的核心作用：获取当前商品的属性
+            $.each(list, function(index, item) {
+				html += `
+						<li id="${item.id}">
+							<a href="${item.address}">
+								<img src="${item.picture}">
+								<h3>${item.name}</h3>
+								<div>￥<span>${item.price}</span></div>
+							</a>
+						</li>
+						`;
+			});
+			$('.shop_list ul').html(html);//选择器找到类名为 shop_list 的元素下的 <ul> 标签
+            //+=表示将新的内容追加到变量末尾，而非替换原有内容。
+		</script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录注册</title>
+	<link rel="stylesheet" href="css/bace.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/index.css">
+    <style>
+        .main-content{
+            display: flex; /* 开启flex布局，子元素横向排列 */
+            min-height: 600px; /* 占父容器1份宽度，与右侧auth-container平分 */
+            padding: 40px 0;
+            background-color: #f5f5f5;
+        }
+        .book-showcase{
+            flex: 1;/* 占父容器1份宽度，与右侧auth-container平分 */
+            padding: 20px;/* 内边距20px，撑开内容与边框的距离 */
+            display: flex;
+            flex-direction: column; /* flex子元素垂直排列（列方向） */
+            align-items: center; /* 子元素水平居中对齐 */
+            justify-content: center;/* 子元素垂直居中对齐 */
+        }
+        .book-showcase h2{
+            font-size: 28px;
+            color: black;
+            margin-bottom: 30px; /* 底部外边距30px，与下方书籍画廊拉开距离 */
+            text-align: center;
+        }
+        .book-gallery{
+            display:flex;/* 开启flex布局，书籍项横向排列 */
+            flex-wrap: wrap; /* 自动换行，防止书籍项超出容器宽度 */
+            justify-content: center;/* 书籍项水平居中对齐 */
+            gap: 20px; /* 书籍项之间的间距（行+列）20px */
+        }
+        .book-item{
+            width: 180px;
+            text-align: center;
+            transition: transform 0.3s ease; /* 过渡动画：仅transform属性，0.3秒，缓动曲线 */
+        }
+        .book-item:hover{
+            transform: translateY(-10px);/* Y轴向上平移10px，营造悬浮感 */
+        }
+        .book-item img{
+            width: 160px;
+            height: 220px;
+            object-fit: cover; /* 图片裁剪填充，保持比例且填满容器（防止拉伸） */
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影：垂直偏移4px，模糊8px，黑色半透明（0.2） */
+            transition: all 0.3s ease;/* 过渡动画：所有属性，0.3秒，缓动曲线 */
+        }
+        .book-item img:hover{
+            border-color: skyblue;
+            opacity: 0.8;
+        }
+        .book-item p{
+            margin-top: 10px;
+            color: #000;
+            font-weight: bold;
+        }
+   /* ========== 登录/注册标签按钮 ========== */
+        .auth-container{
+            flex: 1; /* 占父容器1份宽度，与左侧book-showcase平分 */
+            padding: 20px 40px;
+            display: flex;
+            flex-direction: column; /* 子元素垂直排列（列方向） */
+            justify-content: center;/* 子元素垂直居中（表单居中显示） */
+        }
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .auth-tab{
+            flex: 1;/* 按钮占父容器1份宽度，多个按钮平分 */
+            padding: 12px 20px;
+            cursor: pointer; /* 鼠标悬浮显示手型，标识可点击 */
+            background-color: lightblue;
+            color: black;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease; /* 过渡动画：所有属性，0.3秒，缓动曲线 */
+        }
+        .auth-tab.active{
+            background-color: skyblue;
+            color: white;
+        }
+
+        .auth-form{
+            background-color: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+        }
+        .form-group{
+            margin-bottom: 20px;
+        }
+        .form-group label{
+            display: block;
+            margin-bottom: 8px;
+            color: black;
+            font-weight: bold;
+        }
+        /* 密码输入框包裹层（用于放置可见切换图标） */
+        .pwd-wrapper{
+            position: relative;
+        }
+        .form-group input{
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+        /* 表单输入框聚焦样式 - 强化聚焦反馈，引导用户操作焦点 */
+        .form-group input:focus{
+            border-color: #d4a373;/* 聚焦时边框变色，视觉突出 */
+            outline: none; /* 清除默认浏览器聚焦轮廓（避免样式冲突） */
+            box-shadow: 0 0 0 2px rgba(212, 163, 115, 0.2);
+        }
+        /* 记住密码行样式 左右分布*/
+        .remember-row{
+            display: flex;/* 横向排列子元素 */
+            align-items: center;/* 子元素垂直居中 */
+            justify-content: space-between; /* 两端对齐，最大化利用空间 */
+            margin-bottom: 15px;
+        }
+        .remember-row label{
+            display: flex;
+            align-items: center;/* 复选框与文字垂直居中 */
+            margin: 0;
+            font-weight: normal; /* 取消默认粗体，保持文字轻盈 */
+            cursor: pointer; /* 提示可点击（包含复选框区域） */
+        }
+        .remember-row input{
+            width: auto;
+            margin-right: 8px;
+        }
+         .remember-row a{
+            color: #d4a373; /* 链接颜色与输入框聚焦色统一，保持风格一致 */
+            font-size: 14px;
+            /* text-decoration: none;清除默认下划线 */
+        }
+        .remember-row a:hover{
+            text-decoration: underline;/*  hover时显示下划线，提示可点击 */
+        }
+        /* 注册登录按钮 */
+        .submit-btn{
+            width: 100%;/* 按钮占满表单宽度 */
+            padding: 12px;
+            background-color: skyblue;
+            color: white;
+            border: none; /* 清除默认边框 */
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;/* 提示可点击 */
+            transition: background-color 0.3s ease; /* 背景色过渡动画*/
+        }
+        .submit-btn:hover{
+            background-color: #99d6ff; /* hover时加深颜色，反馈点击状态 */
+        }
+        /* .submit-btn:disabled{
+            background-color: #ccc;
+            cursor: not-allowed;
+            opacity: 0.8;
+        } */
+      /* 表单底部文字样式 - 居中对齐，引导用户切换登录/注册 */
+         .form-footer {
+            margin-top: 20px;
+            text-align: center;
+            color: black;
+            font-size: 14px;       
+        }
+        .form-footer a{
+            color: #0088ff;
+            text-decoration: none;/* 清除默认下划线 */
+            font-weight: bold;
+        }
+        .form-footer a:hover{
+            text-decoration: underline;
+        }
+        /* 错误提示样式 */
+        .error-tip{
+            color: #ff4400;/* 红色警示色，直观提示错误 */
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;/* 默认隐藏，验证失败时通过.show类显示 */
+        }
+        .error-tip.show{
+            display: block;/* 显示错误提示 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 快捷导航 -->
+   <div class="shortcut">
+        <div class="wrapper">
+            <ul>
+                <li><a href="login.html">请先登录</a></li>
+                <li><a href="login.html">免费注册</a></li>
+                <li><a href="cart.html">我的订单</a></li>
+                <li><a href="">会员中心</a></li>
+                <li><a href="">帮助中心</a></li>
+                <li><a href="">在线客服</a></li>
+                <li><a href=""><span></span>手机版</a></li>
+            </ul>
+        </div>
+    </div>
+    
+     <!-- 顶部导航栏 -->
+      <div class="header wrapper">
+        <div class="logo">
+            <a href=""></a>
+        </div>
+
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="index.html">首页</a>
+                    <ul class="sub-menu">
+                        <li><a href="">热榜专区</a></li>
+                        <li><a href="">经典推送</a></li>
+                        <li><a href="">特色专题</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="video.html">在线视频</a>
+                    <ul class="sub-menu">
+                        <li><a href="">长篇动画</a></li>
+                        <li><a href="">短片动画</a></li>
+                    </ul>
+                </li>
+
+                <li>
+					<a href="pink.html">图书选购</a>
+					<ul class="sub-menu">
+						<li><a href="">动漫原著集</a></li>
+						<li><a href="">动漫改编集</a></li>
+					</ul>
+				</li>
+
+                <li>
+					<a href="detail.html">商品详情</a>
+					<ul class="sub-menu">
+						<li><a href="">封面细节</a></li>
+						<li><a href="">内容呈现</a></li>
+				    </ul>
+				</li>
+
+                <li><a href="cart.html">购物车</a></li>
+                <li>
+					<a href="login.html">会员登录</a>
+					<ul class="sub-menu">
+						<li><a href="" class="quick-login">登录</a></li>
+						<li><a href="" class="quick-register">注册</a></li>
+					</ul>
+				</li>
+
+                <li>
+					<a href="leave.html">留言板</a>
+					<ul class="sub-menu">
+						<li><a href="">用户分享区</a></li>
+						<li><a href="">建议反馈区</a></li>
+					</ul>
+				</li>
+            </ul>
+        </div>
+
+        <!-- 搜素 -->
+        <div class="search">
+            <input type="text" placeholder="搜一搜">
+            <!-- 搜素图标 -->
+            <span></span>
+        </div>
+        <div class="car"></div>
+      </div>
+
+      <!-- 主要内容 -->
+       <div class="main-content wrapper">
+        <!-- 左侧书籍展示 -->
+         <div class="book-showcase">
+            <h2>宫崎骏动漫精选书籍</h2>
+            <div class="book-gallery">
+                <div class="book-item">
+                    <img src="images/goods/6.jpg" alt="魔女宅急便">
+                    <p>魔女宅急便</p>
+                </div>
+                <div class="book-item">
+                    <img src="images/goods/3.jpg" alt="龙猫">
+                    <p>龙猫</p>
+                </div>
+                <div class="book-item">
+                    <img src="images/goods/5.jpg" alt="哈尔的移动城堡">
+                    <p>哈尔的移动城堡</p>
+                </div>
+                <div class="book-item">
+                    <img src="images/goods/1.jpg" alt="起风了">
+                    <p>起风了</p>
+                </div>
+            </div>
+         </div>
+
+         <div class="auth-container">
+            <div class="auth-tabs">
+                <!-- active标记当前按钮处于「激活 / 选中」状态 -->
+                <button class="auth-tab active" data-tab="register">注册账号</button>
+                <button class="auth-tab " data-tab="login">会员登录</button>
+            </div>
+
+            <!-- 登录表单 -->
+            <form id="login-form" class="auth-form" style="display: none;">
+                <div class="form-group">
+                    <label for="login-username">11位数字会员账号</label>
+                    <input type="tel" id="login-username" placeholder="请输入11位数字会员账号" maxlength="11" required><!--输入框-->
+                    <p class="error-tip" id="login-username-error">会员账号必须是11位数字</p><!--提示-->
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">密码</label>
+                    <div class="pwd-wrapper">
+                        <input type="password" id="login-password" placeholder="请输入密码" required><!--核心作用是标记表单输入控件为「必填项」—— 当用户提交表单时，若该控件为空，浏览器会自动拦截表单提交-->
+                    </div>
+                    <p class="error-tip" id="login-password-error">密码不能为空！</p>
+                </div>
+
+                <div class="remember-row">
+                    <label><input type="checkbox" id="remember-pwd">记住密码</label>
+                    <a href="" id="forget-pwd">忘记密码？</a>
+                </div>
+
+                <button type="submit" class="submit-btn" id="login-btn">登录</button>
+                <div class="form-footer">
+                    还没有账号？
+                    <a href="" class="switch-to-register">立即注册</a>
+                </div>
+             </form>
+
+             <!-- 注册表单 -->
+              <form id="register-form" class="auth-form" style="display: block;">
+                <div class="form-group">
+                    <label for="register-username">用户名</label>
+                    <input type="text" id="register-username" placeholder="请输入用户名（2-10位）" required>
+                    <p class="error-tip" id="register-username-error">用户名长度需在2-10位之间！</p>
+                </div>
+
+
+                 <div class="form-group">
+                    <label for="register-member-id">11位数字会员账号 <span style="color:red">*</span></label>
+                    <input type="tel" id="register-member-id" placeholder="请输入11位数字会员账号" maxlength="11" required>
+                    <p class="error-tip" id="register-member-error">会员账号必须是11位纯数字！</p>
+                 </div>
+
+                <div class="form-group">
+                    <label for="register-password">密码（至少6位）</label>
+                    <div class="pwd-wrapper">
+                        <input type="password" id="register-password" placeholder="请输入密码（至少6位）" required>
+                    </div>
+                    <p class="error-tip" id="register-password-error">密码长度不能少于6位！</p>
+                </div>
+             
+                <button type="submit" class="submit-btn" id="register-btn">立即注册</button>
+                <div class="form-footer">已有账号？<a href="#" class="switch-to-login">立即登录</a></div>
+              </form>
+         </div>
+       </div>
+
+
+        <div class="footer">
+            <div class="wrapper">  
+                <div class="top">
+                    <ul>
+                        <li><span>价格亲民</span></li>
+                        <li><span>物流快捷</span></li>
+                        <li><span>质量保证</span></li>
+                    </ul>
+                </div>
+                <div class="bottom">
+                    <p>
+                        <a href="#">关于我们</a> | <a href="#">帮助中心</a> |
+						<a href="#">售后服务</a> | <a href="#">配送与验收</a> |
+						<a href="#">商务合作</a> | <a href="#">搜索推荐</a> |
+						<a href="#">友情链接</a>
+                    </p>
+                    <p>CopyRight @ 在线商城</p>
+                </div>
+            </div>
+        </div>
+       <script src="js/jquery-3.7.1.min.js"></script>
+       <script src="js/login.js"></script>   
+</body>
+</html>
