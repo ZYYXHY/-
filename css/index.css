@@ -1,0 +1,138 @@
+.banner{
+    height: 400px;
+    background-color: #f5f5f5;
+}
+.banner .wrapper{
+    position: relative;
+    height: 400px;
+}
+.banner .aside{
+    position: absolute;/* 绝对定位，脱离文档流 */
+    left: 0;/* 距离容器左侧0像素 */
+    top: 0;
+    width: 250px;
+    height: 400px;
+    background-color: skyblue;
+}
+/* 轮播图容器：绝对定位固定在右侧 */
+.banner #imageContainer{
+    width: 990px;
+    position: absolute;/* 绝对定位，脱离文档流 */
+    right: 0;
+    top: 0;
+}
+.banner #imageContainer img{
+    width: 100%;/* 宽度铺满容器 */
+    height: 100%;
+}
+.banner .aside li{
+    height: 50px;
+    line-height: 50px;/* 行高=高度，文字垂直居中 */
+}
+.banner .aside a{
+    position: relative;/* 为右侧箭头伪元素提供定位参考 */
+    padding-left: 33px;
+    display: block;/* 块级元素，点击区域铺满整个li */
+    height: 50px;
+    color: #FFF;
+}
+.banner .aside a span{
+    margin-left: 15px;
+    font-size: 14px
+}
+.banner .aside a:hover{
+    background-color: steelblue;
+}
+/* 左侧栏箭头 */
+.banner .aside a::after{
+    position: absolute; /* 绝对定位，固定在链接右侧 */
+    right: 19px;
+    top: 19px;
+    content: '';/* 伪元素必须有content，空值仅渲染样式 */
+    width: 6px;
+    height: 11px;
+    background-image: url(../images/sprites.png);
+    background-position: -80px -110px;
+}
+/* 轮播图箭头 */
+ .next,.prev{
+    position: absolute;/* 绝对定位，悬浮在轮播图上方 */
+    top: 180px;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(0,0,0,0.2);
+    background-image: url(../images/sprites.png);
+    border-radius: 50%;
+} 
+.prev {
+  left: 260px;
+  background-position: 14px -60px;
+}
+.next {
+  right: 10px;
+  background-position: -23px -60px;
+}
+
+
+.goods .head{
+    height: 114px;
+    line-height: 114px;
+}
+.goods .head h2{
+    float: left;
+    font-size: 29px;
+    font-weight: 400;
+    height: 114px;
+}
+.goods .head h2 span{
+    margin-left: 34px;
+    font-size: 16px;
+    color: #999;
+}
+.goods .head a{
+    float: right;
+    color: #999;
+}
+/* 右边箭头 */
+.goods .head a::after{
+    content: ''; /* 伪元素必备 */
+    display: inline-block;/* 行内块，与文字同行显示 */
+    margin-left: 15px;
+    width: 7px;
+    height: 13px;
+    background-image: url(../images/sprites.png);
+    background-position: 0 -110px;
+    vertical-align: middle;/* 垂直居中，与文字对齐 */
+}
+
+.goods .bd li{
+    position: relative;
+    float: left;
+    width: 304px;
+    height: 405px;
+    background-color: #f0f0f0;
+    margin-right: 5px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+.goods .bd li:last-child{
+    margin-right: 0;
+}
+.goods .bd li img{
+    margin-top: 10px;
+    width: 70%;
+    height: 300px;
+}
+.goods .bd li h3{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 400;
+}
+.goods .bd li div{
+    color: red;
+    font-size: 17px;
+}
+.goods .bd li div span{
+    font-size: 23px;
+}

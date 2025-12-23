@@ -1,0 +1,214 @@
+/* 页面公共容器类 - 固定宽度1240px，水平居中，用于统一页面内容布局 */
+.wrapper{
+    width: 1240px; /* 容器固定宽度，适配主流屏幕 */
+    margin: 0 auto;/* 左右自动外边距，实现水平居中 */
+}
+/* 快捷导航栏容器 - 顶部快捷功能区样式 */
+.shortcut{
+    height: 52px;/* 快捷导航栏固定高度 */
+    background-color: skyblue;
+}
+/* 快捷导航栏内部容器 - 继承父级高度，保证内部元素对齐 */
+.shortcut .wrapper{
+    height: 52px;   /* 与父容器.shortcut同高，避免内部元素高度溢出或错位 */
+}
+.shortcut .wrapper ul{
+    float: right;  /* 列表整体右浮动，实现导航项靠右显示 */
+}
+.shortcut .wrapper li{
+    float: left; /* 列表项横向浮动排列（水平布局） */
+    line-height: 52px; /*行高等于父容器高度，实现文字垂直居中 */
+}
+.shortcut .wrapper a{
+    padding: 0 16px;/* 左右内边距，增加链接点击区域和间距 */
+    border-right: 1px solid #666;/* 右侧灰色边框，分隔各个导航项 */
+    font-size: 15px;
+    color: #333;
+}
+.shortcut .wrapper a:hover{
+    text-decoration: underline; /* 仅保留基础下划线 */
+    color: rgb(127, 132, 121);
+}
+/* 导航链接内图标样式 - 背景图定位与对齐 */
+.shortcut .wrapper a span{
+    display: inline-block;/* 转为行内块，支持宽高设置 */
+    margin-right: 8px;/* 图标与文字间距 */
+    width: 13px;/* 图标宽度*/
+    height: 17px;/* 图标高度*/
+    background-image: url(../images/sprites.png);
+    background-position: -160px -70px; /*正数：背景图片向元素的右 / 下方向偏移；负数：背景图片向元素的左 / 上方向偏移（这是精灵图的核心用法）*/
+    vertical-align: middle; /* 与文字垂直居中对齐，避免图标上下偏移 */
+}
+.shortcut .wrapper li:last-child a{
+    border: 0;/* 清除最后一个导航项的右侧边框，避免多余线条 */
+}
+
+.header{
+    margin: 30px auto;/* 上下间距30px，左右自动居中 */
+    height: 50px; /* 头部容器高度 */
+}
+.logo{
+    float: left;
+    width: 207px;
+    height: 70px;
+}
+.logo a{
+    display: block;/* 转为块级元素，支持宽高 */
+    width: 207px;/* Logo宽度 */
+    height: 60px;/* Logo高度 */
+    background-image: url(../images/l.jpg);
+    background-size: contain;/* 背景图自适应容器尺寸，保持比例 */
+}
+.nav{
+    float: left; /* 左浮动，与Logo同行 */
+    margin-left: 40px;/* 与左侧Logo的间距 */
+    height: 70px;  /* 导航栏高度，与Logo对齐 */
+}
+.nav li{
+    float: left;/* 左浮动，菜单项横向排列 */
+    margin-right: 48px; /* 菜单项之间的右侧间距 */
+    line-height: 70px;/* 行高等于容器高度，文字垂直居中 */
+    position: relative; /* 相对定位：作为子菜单绝对定位的参考父级 */
+}
+.nav li a:hover{
+    color: #27ba9b; /* 文字颜色变为青绿色 */
+    border-bottom: 1px solid  #27ba9b; /* 底部添加青绿色边框（下划线效果） */
+}
+.nav li a {
+  padding-bottom: 7px; /* 底部内边距，避免hover边框与文字重叠 */
+}
+.nav ul.sub-menu{
+    display: none;  /* 默认隐藏下拉菜单 */
+    position: absolute; /* 绝对定位：基于父级li（relative）定位 */
+    top: 100%; /* 顶部对齐父级li的底部 */
+    left: 0; /* 左侧对齐父级li的左侧 */
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);/*水平偏移，垂直偏移，模糊半径*/
+    border-radius: 4px;
+    padding: 10px 0;/* 上下内边距，左右无（由子项控制） */
+    z-index: 100;/* 提高层级，避免被其他元素遮挡 */
+    min-width: 150px;/* 最小宽度，保证菜单内容不挤压 */
+    transition: all 0.3s ease; /* 过渡动画：hover显示/隐藏时更顺滑 */
+}
+/* 下拉菜单项：取消横向排列，重置间距和行高 */
+.nav ul.sub-menu li{
+    float: none;/* 取消左浮动，改为纵向排列 */
+    line-height: 40px;
+    margin: 0;
+}  
+.nav ul.sub-menu li a{
+    display: block;/* 块级元素，占满父级宽度，点击区域更大 */
+    padding: 0 20px;/* 左右内边距，控制文字位置 */
+    color: #333;
+    border-right:none;
+}
+/* 下拉菜单链接 hover 效果：背景色+加粗 */
+.nav ul.sub-menu li a:hover{
+    background-color: lightblue;
+    font-weight: bold;
+}
+.nav li:hover > ul.sub-menu{
+    display: block;
+}
+
+.search{
+    position: relative; /* 相对定位：作为内部搜索图标的绝对定位参考父级 */
+    float: left; /* 左浮动：与logo/导航/购物车等元素横向排列 */
+    margin-top: 24px;/* 顶部外间距*/
+    margin-left: 30px; /* 左侧外间距*/
+    width: 172px;
+    height: 30px;
+    border-bottom: 2px solid #e7e7e7;
+}
+.search input{
+    padding-left: 50px;
+    width: 172px;
+    height: 28px;
+}
+.search input::placeholder{
+    font-size: 11px;
+    color: #CCC;
+}
+.search span{
+    position: absolute;/* 绝对定位：脱离文档流，固定在搜索框左侧 */
+    left: 2px;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    background-image: url(../images/sprites.png);
+    background-position: -79px -69px;
+}
+.car{
+    position: relative; /* 相对定位：作为右上角数字角标的绝对定位参考父级 */
+    float: left;/* 左浮动：与搜索框横向排列 */
+    margin-top: 28px;
+    margin-left: 15px;
+    width: 23px;
+    height: 23px;
+    background-image: url(../images/sprites.png);
+    background-position: -119px -69px;
+}
+
+
+
+/* 版权 */
+.footer{
+    background-color: lightblue;
+}
+.footer .wrapper{
+    max-width: 1200px; /* 大屏下最大宽度，限制内容过宽 */
+    width: 90%; /* 小屏/缩放时占页面90%宽度，保证自适应 */
+    margin: 0 auto;  /* 水平居中，让内容始终在页面中间 */
+}
+.footer .top{
+    padding: 51px 0; /* 上下内边距，控制顶部区域的垂直留白 */
+    height: auto; /* 高度自适应，避免固定高度导致内容溢出 */
+    border-bottom: 3px solid #434343;
+}
+.footer .top ul{
+    display: flex;  /* 弹性布局,让li横向排列 */
+    justify-content: space-between;  /* li 之间自动分配间距*/
+    align-items: center;   /* 让li垂直居中，保证图标+文字对齐 */
+}
+.footer .top li{
+    position: relative;/* 为伪元素（图标）提供绝对定位参考 */
+    width: 195px;   /* 固定 li 宽度，保证每个功能项区域一致 */
+    height: 58px;
+    line-height: 58px;
+    margin: 0;   /* 清空默认旧的 margin，由 flex 控制间距 */
+}
+.footer .top li::before{
+    position: absolute; /* 绝对定位，固定在 li 左侧 */
+    left: 0; /* 距离 li 左侧 0 像素 */
+    top: 0;
+    content: '';/* 伪元素必须有content，空值仅渲染样式 */
+    width: 58px; /* 图标宽度 */
+    height: 58px;
+    background-image: url(../images/sprites.png);
+    vertical-align: middle;/* 垂直对齐，辅助图标与文字居中 */
+}
+.footer .top li span{
+    margin-left: 77px;
+    font-size: 28px;
+    color: #FFF;
+}
+.footer .top li:nth-child(2)::before{
+    background-position: -130px 0;
+}
+.footer .top li:nth-child(3)::before{
+    background-position: -64px 0;
+}
+.footer .bottom{
+    padding: 30px 0 15px;/* 上下内边距，控制版权区垂直留白 */
+    font-size: 14px;
+    color: #999;
+    text-align: center;/* 文字水平居中 */
+}
+.footer .bottom a{
+    font-size: 14px;
+    color: #999;
+}
+.footer .bottom p{
+    margin-bottom: 15px; /* 段落底部外边距，分隔链接行和版权行 */
+        
+}
